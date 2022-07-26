@@ -1,12 +1,13 @@
 const ethers = require('ethers');
+const dotenv  = require('dotenv').config({path: 'C://Users//hybri//web3 projects//learning-ether.js//.env'});
 
 async function main() {
     //Ganache rpc 
-    const url = "HTTP://127.0.0.1:7545";
+    const url = process.env.RPC_URL;
   
     const provider = new ethers.providers.JsonRpcProvider(url);
   
-    const privateKey = "16bb9b14c80d35ba7b8bf0909e6071aaf23ff68fdf8308ff01bf969b1da9834e"; //no security issues, just a ganache localaccount
+    const privateKey = process.env.PRIVATE_KEY; //no security issues, just a ganache localaccount
     const wallet = new ethers.Wallet(privateKey, provider);
     
     const signer1 = provider.getSigner(1);
